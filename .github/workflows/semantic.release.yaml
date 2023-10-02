@@ -17,6 +17,8 @@ jobs:
         with:
           semantic_version: 22
           extra_plugins: |
+            @semantic-release/commit-analyzer
+            @semantic-release/release-notes-generator
             @semantic-release/changelog@6.0.0
             @semantic-release/git
         env:
