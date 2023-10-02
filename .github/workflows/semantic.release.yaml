@@ -1,5 +1,5 @@
 # .github/workflows/semantic.release.yaml
-name: Semantic Release
+name: Release
 
 on:
   push:
@@ -7,9 +7,32 @@ on:
       - master
 
 jobs:
-  semantic-release:
-    name: Semantic Release
+  build-releses-matrix:
+    name: release linux/amd64
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [ linux, windows, darwin, openbsd ]
+        goarch: [ amd64, arm64 ]
+        exclude:
+          - goarch: arm64
+            goos: openbsd
+          - goarch: arm64
+            goos: windows
+    steps:
+      - uses: actions/checkout@v3
+      - name: go build action
+        uses: wangyoucao577/go-release-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
+          goversion: 1.17
+          binary_name: mailrelay-${{ matrix.goos }}-${{ matrix.goarch }}
+  semantic-release:
+    name: semantic release
+    runs-on: ubuntu-latest
+    needs: release-linux-amd64
     steps:
       - uses: actions/checkout@v3
       - name: Semantic Release
