@@ -46,6 +46,7 @@ func Start(appConfig *mailRelayConfig, verbose bool) (err error) {
 		"smtp_port":             appConfig.SMTPPort,
 		"smtp_starttls":         appConfig.SMTPStartTLS,
 		"smtp_login_auth_type":  appConfig.SMTPLoginAuthType,
+		"smtp_no_auth":          appConfig.SMTPNoAuth,
 		"smtp_skip_cert_verify": appConfig.SkipCertVerify,
 	}
 	cfg.BackendConfig = bcfg
@@ -61,6 +62,7 @@ type relayConfig struct {
 	Port          int    `json:"smtp_port"`
 	STARTTLS      bool   `json:"smtp_starttls"`
 	LoginAuthType bool   `json:"smtp_login_auth_type"`
+	NoAuth        bool   `json:"smtp_no_auth"`
 	Username      string `json:"smtp_username"`
 	Password      string `json:"smtp_password"`
 	SkipVerify    bool   `json:"smtp_skip_cert_verify"`

@@ -98,16 +98,20 @@ func handshake(client *smtp.Client, config *relayConfig, tlsConfig *tls.Config) 
 		}
 	}
 
-	var auth smtp.Auth
-	if config.LoginAuthType {
-		auth = LoginAuth(config.Username, config.Password)
-	} else {
-		auth = smtp.PlainAuth("", config.Username, config.Password, config.Server)
-	}
+	if !config.NoAuth {
+		var auth smtp.Auth
+		Logger.Info("using authentication to SMTP server.")
+		if config.LoginAuthType {
+			auth = LoginAuth(config.Username, config.Password)
+		} else {
+			auth = smtp.PlainAuth("", config.Username, config.Password, config.Server)
+		}
 
-	if err := client.Auth(auth); err != nil {
-		return errors.Wrap(err, "auth error")
+		if err := client.Auth(auth); err != nil {
+			return errors.Wrap(err, "auth error")
+		}
 	}
+	Logger.Info("not using authentication to SMTP server.")
 	return nil
 }
 

@@ -28,6 +28,7 @@ type mailRelayConfig struct {
 	SMTPPort          int      `json:"smtp_port"`
 	SMTPStartTLS      bool     `json:"smtp_starttls"`
 	SMTPLoginAuthType bool     `json:"smtp_login_auth_type"`
+	SMTPNoAuth        bool     `json:"smtp_no_auth"`
 	SMTPUsername      string   `json:"smtp_username"`
 	SMTPPassword      string   `json:"smtp_password"`
 	SkipCertVerify    bool     `json:"smtp_skip_cert_verify"`
@@ -119,6 +120,7 @@ func configDefaults(config *mailRelayConfig) {
 	config.SMTPPort = DefaultSTMPPort
 	config.SMTPStartTLS = false
 	config.SMTPLoginAuthType = false
+	config.SMTPNoAuth = false
 	config.MaxEmailSize = DefaultMaxEmailSize
 	config.SkipCertVerify = false
 	config.LocalListenIP = DefaultLocalListenIP
