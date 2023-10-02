@@ -19,7 +19,8 @@
       "@semantic-release/github",
       {
         "assets": [
-          { "path": "CHANGELOG.md", "label": "CHANGELOG" }
+          { "path": "CHANGELOG.md" }
+          { "path": "mailrelay-*-*" }
         ]
       }
     ]
