@@ -1,4 +1,4 @@
-# .github/workflows/semantic.release.yaml
+# .github/workflows/main.yaml
 name: release
 
 on:
