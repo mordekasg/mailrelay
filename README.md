@@ -1,7 +1,7 @@
 # mailrelay
 
 [![Build Status](https://github.com/mordekasg/mailrelay/actions/workflows/.github/workflows/main.yaml/badge.svg?branch=master)](https://github.com/mordekasg/mailrelay/actions/workflows/.github/workflows/main.yaml)
-[![Report Card](https://goreportcard.com/badge/github.com/mordekasg/mailrelay)](https://goreportcard.com/report/github.com/wiggin77/mailrelay)
+[![Report Card](https://goreportcard.com/badge/github.com/mordekasg/mailrelay)](https://goreportcard.com/report/github.com/mordekasg/mailrelay)
 
 `mailrelay` is a simple mail relay that can take unauthenticated SMTP emails (e.g. over port 25) and relay them to authenticated, TLS-enabled SMTP servers. Plus it's easy to configure.
 
